@@ -1,0 +1,12 @@
+??png
+png {grDevices}
+
+# 1.png
+png(filename = , width = 1000, height = 800)
+print()
+dev.off()
+
+# 2.tiff
+tiff(file = out.name, width = 300, height = 400, units = "px", res = 120)
+print()
+dev.off()
