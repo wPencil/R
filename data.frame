@@ -1,0 +1,6 @@
+# 给数据框列名重命名
+names(my_data)[names(my_data) =="Sepal.Length"] <-"sepal_length"
+names(my_data)[1] <-"sepal_length"
+
+library(dplyr)
+rename(my_data, new.name = old.name)
