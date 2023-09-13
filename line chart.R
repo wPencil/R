@@ -89,8 +89,8 @@ ggplot(data = test0, mapping = aes(x=date, y=value, color=variable))+
   theme_classic()+ # theme_gray() by default
   scale_color_manual(values = c("red","darkblue"))+ # set group color
   labs(title = "line chart", 
-       #subtitle = "XXXXXXX", 
-       #x = "XXXXX", y = "XXXXX"
+       #subtitle = "", 
+       #x = "", y = ""
   )+
   theme(plot.title = element_text(hjust = 0.5))+
   scale_x_continuous(breaks = unique(test0$date)) # show all
