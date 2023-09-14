@@ -98,7 +98,7 @@ ggsave("2.2_ts_two_group.png", width = 10, dpi = 500)
 
 # function----------------------------------------------------------------------
 line_chart <- function(test0, x0, y0, title0=NULL,groups0=NULL, colors0=NULL,
-                       x_labs0=NULL, y_labs0=NULL, legend_title0=NULL, subtitle0=NULL){
+                       x_labs0=NULL, y_labs0=NULL, legend_title0=NULL){
   library(ggplot2)
   
   ggplot(data = test0, mapping = aes(x=x0, y=y0, color=groups0))+
@@ -122,7 +122,6 @@ line_chart(test0 = test0, x0 = test0$date, y0 = test0$value,
            title0 = "This is title",
            x_labs0 = "x-axis names",
            y_labs0 = "y-axis names",
-           legend_title0 = "legend title",
-           subtitle0 = "This is subtitle"
+           legend_title0 = "legend title"
            )
 ggsave("line_chart_function.png", width = 10, dpi = 500)
