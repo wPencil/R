@@ -1,5 +1,0 @@
-# Matrix data type conversion
-apply（matrix， c(1,2), as.numeric) # Convert to numeric type (common)
-
-# 查看包的版本
-packageVersion()
