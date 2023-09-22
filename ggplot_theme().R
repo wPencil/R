@@ -1,5 +1,5 @@
 library(ggplot2)
-them
+
 # 1.theme_gray() by dafault-----------------------------------------------------
 ggplot(mtcars, aes(x=mpg, y=cyl))+
   geom_point()
@@ -49,3 +49,10 @@ ggsave("theme_void().png", dpi = 500)
 
 # Set theme globally
 theme_set(theme_classic())
+
+# my plot-----------------------------------------------------------------------
+ggplot(mtcars, aes(x=mpg, y=cyl))+
+  geom_point()+
+  theme_bw()+
+  theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank())
+ggsave("my_plot.png", dpi = 500)
