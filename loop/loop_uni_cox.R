@@ -1,4 +1,4 @@
-uni_cox <- function(test0){
+loop_uni_cox <- function(test0){
   # Store univariate cox results
   res <- matrix(,nrow = dim(test0)[2]-2, ncol = 5, 
                 dimnames = list(NULL,
