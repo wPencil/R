@@ -1,7 +1,7 @@
 fig_survival <- function(object0, file_name, ylab0, xlab0, break_x0,
                          xlim0, legend_title0, legend_labs0){
-  # library(survival)
-  # library(survminer)
+  library(survival)
+  library(survminer)
 
   # survfit()-------------------------------------------------------------------
   fit <- surv_fit(Surv(time, status) ~ groups, data = object0)
