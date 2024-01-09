@@ -23,11 +23,11 @@ cox_uni <- function(object){
   # cox
   for(i in 3:dim(object)[2]){
     res_i <- summary(coxph(Surv(object[,1], object[,2]) ~ object[,i], data = object))
-    res["variable", 1] <- colnames(object)[i]
-    res["p-value", 2] <- res_i$coefficients[5]  # p-value
-    res["HR", 3] <- res_i$coefficients[2]       # HR
-    res["lower.95", 4] <- res_i$conf.int[3]     # lower.95
-    res["upper.95", 5] <- res_i$conf.int[4]     # upper.95
+    res[i-2, "variable"] <- colnames(object)[i]
+    res[i-2, "p-value"] <- res_i$coefficients[5]  # p-value
+    res[i-2, "HR"] <- res_i$coefficients[2]       # HR
+    res[i-2, "lower.95"] <- res_i$conf.int[3]     # lower.95
+    res[i-2, "upper.95"] <- res_i$conf.int[4]     # upper.95
   }
 
   return(res)
