@@ -20,7 +20,7 @@ fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
   x <- object$time
 
   # fig-------------------------------------------------------------------------
-  if(legeng_pos == "top right corner"){
+  if(legend_pos == "top right corner"){
     p<-ggsurvplot(fit,
                 pval = TRUE, pval.coord = c(0.7*max(x), 1),
                 pval.method = TRUE, pval.method.coord=c(0.4*max(x),1),
@@ -43,7 +43,7 @@ fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
       theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank())
   }
 
-  if(legeng_pos == "lower left corner"){
+  if(legend_pos == "lower left corner"){
     p<-ggsurvplot(fit,
                   pval = TRUE, pval.coord = c(0.32*max(x), 0.18),
                   pval.method = TRUE, pval.method.coord=c(0.03*max(x),0.18),
