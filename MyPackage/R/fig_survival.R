@@ -1,5 +1,13 @@
 fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
                          xlim0, legend_title0, legend_labs0){
+  # readme----------------------------------------------------------------------
+  # The format of input object. data.frame()
+  #       1     2       3
+  # 0    time  status  groups
+  # 1
+  # 2
+
+  # Load packages---------------------------------------------------------------
   library(survival)
   library(survminer)
 
@@ -26,10 +34,9 @@ fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
 
   p$plot <- p$plot+
     theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank())+
-    # ggtitle("My Survival Plot")+
     theme(plot.title = element_text(hjust = 0.5))+
-    annotate("text",x=0.7*max(x),y=0.91, label=paste0("HR(95%CI) = ", round(res$conf.int[1],2), "(",round(res$conf.int[3],2),"-", round(res$conf.int[4],2), ")" ))+
-    annotate("text",x=0.7*max(x),y=0.83, label=paste0("C-index = ", round(res$concordance[1],2)))
+    annotate("text",x=0.7*max(x),y=0.91, label=paste0("HR(95%CI) = ", round(res$conf.int[1],2), "(",round(res$conf.int[3],2),"-", round(res$conf.int[4],2), ")" ))+ # add HR(95%CI)
+    annotate("text",x=0.7*max(x),y=0.83, label=paste0("C-index = ", round(res$concordance[1],2))) # add C-index
   p$table <- p$table+
     theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank())
 
