@@ -1,15 +1,15 @@
-fig_survival <- function(object0, file_name, ylab0, xlab0, break_x0,
+fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
                          xlim0, legend_title0, legend_labs0){
   library(survival)
   library(survminer)
 
   # survfit()-------------------------------------------------------------------
-  fit <- surv_fit(Surv(time, status) ~ groups, data = object0)
+  fit <- surv_fit(Surv(time, status) ~ groups, data = object)
 
   # cox-------------------------------------------------------------------------
-  cox <- coxph(Surv(time, status) ~ groups, data = object0)
+  cox <- coxph(Surv(time, status) ~ groups, data = object)
   res <- summary(cox)
-  x <- object0$time
+  x <- object$time
 
   # fig-------------------------------------------------------------------------
   p<-ggsurvplot(fit,
@@ -22,7 +22,7 @@ fig_survival <- function(object0, file_name, ylab0, xlab0, break_x0,
                 legend.labs = legend_labs0,
                 xlab = xlab0, xlim = xlim0, break.x.by = break_x0,
                 ylab = ylab0
-  )
+                )
 
   p$plot <- p$plot+
     theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank())+
@@ -33,6 +33,7 @@ fig_survival <- function(object0, file_name, ylab0, xlab0, break_x0,
   p$table <- p$table+
     theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank())
 
+  # Save as tiff image----------------------------------------------------------
   tiff(file_name, width = 4290, height = 4930, res = 1000)
   print(p)
   dev.off()

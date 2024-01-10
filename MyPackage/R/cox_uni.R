@@ -20,7 +20,7 @@ cox_uni <- function(object){
                                 )
                 )
 
-  # cox
+  # cox-------------------------------------------------------------------------
   for(i in 3:dim(object)[2]){
     res_i <- summary(coxph(Surv(object[,1], object[,2]) ~ object[,i], data = object))
     res[i-2, "variable"] <- colnames(object)[i]
