@@ -1,5 +1,6 @@
-fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
-                         xlim0, legend_title0, legend_labs0, legend_pos=1){
+fig_survival <- function(object, file_name, ylab0="Survival probability",
+                         xlab0="Time", break_x0=NULL, xlim0=NULL,
+                         legend_title0=NULL, legend_labs0=NULL, legend_pos=1){
   # readme----------------------------------------------------------------------
   # The format of input object. data.frame()
   #       1     2       3
@@ -67,7 +68,7 @@ fig_survival <- function(object, file_name, ylab0, xlab0, break_x0,
 
 
   # Save as tiff image----------------------------------------------------------
-  tiff(file_name, width = 4290, height = 4930, res = 1000)
+  tiff(paste0(file_name,".tiff"), width = 4290, height = 4930, res = 1000)
   print(p)
   dev.off()
 }
