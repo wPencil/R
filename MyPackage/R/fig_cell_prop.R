@@ -19,7 +19,7 @@ fig_cell_prop <- function(object, file_name,ylab0=NULL,test_method="wilcox"){
   }
 
   if(test_method == "t"){
-    test_res <- t.test(percent ~ pheno, data = current.df)
+    test_res <- t.test(percent ~ pheno, data = object)
     xlab_text <- paste0(as.character(unique(object$names)),": P = ",round(test_res$p.value,4))
   }
 
