@@ -9,6 +9,10 @@ fig_cell_prop <- function(object, file_name,ylab0=NULL,test_method="wilcox"){
   # To test the different of the percent of cell type in R and NR
   # cell_type, sample_id, percent, pheno(R, NR)
 
+  # Load packages---------------------------------------------------------------
+  library(coin)
+  library(ggpubr)
+
   # rename the column names-----------------------------------------------------
   colnames(object) <- c("names", "sample_id", "percent", "pheno")
 
