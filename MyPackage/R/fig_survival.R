@@ -12,6 +12,10 @@ fig_survival <- function(object, file_name, ylab0="Survival probability",
   library(survival)
   library(survminer)
 
+  # Setting the column names of object------------------------------------------
+  colnames(object) <- c("time", "status", "groups")
+
+
   # survfit()-------------------------------------------------------------------
   fit <- surv_fit(Surv(time, status) ~ groups, data = object)
 
