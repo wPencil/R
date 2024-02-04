@@ -4,7 +4,7 @@
 # My function
 
 ## get_exp(GSE_name = )
-get_exp() is used to get the exp from the GSE_series_matrix.txt.gz
+get_exp() is used to get the expression spectrum from a gz archive, for example GSE46862_series_matrix.txt.gz
 ```
 exp <- get_exp(GSE_name = "GSE46862_series_matrix.txt.gz")
 
