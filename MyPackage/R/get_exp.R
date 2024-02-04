@@ -3,9 +3,11 @@ get_exp <- function(GSE_name){
 
   library(data.table)
   library(magrittr)
+  library(R.utils)
 
   # import the series matrix
-  GSE <- fread(GSE_name, fill = TRUE)
+  GSE_txt <- gunzip("GSE46862_series_matrix.txt.gz", remove = FALSE)
+  GSE <- fread(GSE_txt, fill = TRUE)
 
   row_exp_mat_begin <- which(GSE == "!series_matrix_table_begin", arr.ind = TRUE)[, 1] + 1
   row_exp_mat_end <- which(GSE == "!series_matrix_table_end", arr.ind = TRUE)[, 1] - 1
