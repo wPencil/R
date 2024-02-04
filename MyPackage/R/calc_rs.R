@@ -7,8 +7,7 @@ calc_rs <- function(object){
   library(magrittr)
 
   # Import the risk model-------------------------------------------------------
-  load("data/risk_model.rds") # risk model
-  usethis::use_data(risk_model)
+  data("risk_model") # risk model
 
   # 1. Component genes and corresponding coefficients of the risk model---------
   gene <- coef(risk_model) %>% as.matrix()
