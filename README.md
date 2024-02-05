@@ -3,7 +3,7 @@
 
 # My function
 
-## get_exp(GSE_name = )
+## get_exp()
 get_exp() is used to get the expression spectrum from a gz archive, for example GSE46862_series_matrix.txt.gz
 ```
 exp <- get_exp(GSE_name = "GSE46862_series_matrix.txt.gz")
@@ -18,7 +18,46 @@ head(exp)
 # V16  7892506   4.102330   3.281870   3.706087   3.749726   3.696270   2.955118   3.130440
 ```
 
-## calc_rs(object = )
+## plot_survival_curve()
+
+**Description**    
+plot_survival_curve() is used to draw survival curve and save as tiff image(by default) or png image. Must specify time, status, groups
+
+**Usage**
+```
+plot_survival_curve <- function(object, time, event, groups,
+                         image_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
+
+                         xlab0="time", ylab0="Survival probability",
+                         xlim0=NULL, break_x0=NULL,
+                         legend_title0=NULL, legend_labs0=NULL,
+
+                         legend_pos=c(1, 2), image_type = c("tiff", "png"))
+```
+
+**Arguments**    
+legend_pos: 1 or 2. 1: show p-value in the upper right corner (default); 2: show p-value in the lower left corner
+
+```
+plot_survival_curve(object = lung, time = "time", event = "status", groups = "sex")
+```
+<img src="https://github.com/wPencil/R/assets/109512465/51722362-b66d-4637-93b8-14db23387651" width="500" height="500">
+
+```
+plot_survival_curve(object = lung, time = "time", event = "status", groups = "sex",
+
+                    image_name = "survival curve of lung dataset",
+
+                    xlab0 = "This is x-axis", ylab0 = "This is y-axis",
+                    xlim0 = c(0,1200), break_x0 = 300,
+                    legend_title0 = "This is title", legend_labs0 = c("Male=1", "Female=2")
+                    )
+```
+<img src="https://github.com/wPencil/R/assets/109512465/16c09757-de96-4e8d-8c0d-b25068608a39" width="500" height="500">
+
+
+
+## calc_rs()
 
 The example is below, input data is a expression series, whose row is genes and column is samples
 ```
