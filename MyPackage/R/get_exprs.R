@@ -1,4 +1,4 @@
-get_exp <- function(GSE_name) {
+get_exprs <- function(GSE_name) {
 
   # get the raw expression matrix from the "GSE_series_matrix.txt.gz"
 
@@ -6,11 +6,11 @@ get_exp <- function(GSE_name) {
   library(R.utils)
 
   GSE_txt <- gunzip(GSE_name, remove = FALSE)
-  GSE_exp <- read.table(GSE_txt, header = TRUE, comment.char = "!")
+  GSE_exprs <- read.table(GSE_txt, header = TRUE, comment.char = "!")
   # comment.char = "!": "!" followed by the contents of the comment, do not read
 
-  rownames(GSE_exp) <- GSE_exp[, 1]
-  GSE_exp <- GSE_exp[, -1]
+  rownames(GSE_exprs) <- GSE_exprs[, 1]
+  GSE_exprs <- GSE_exprs[, -1]
 
-  return(GSE_exp)
+  return(GSE_exprs)
 }
