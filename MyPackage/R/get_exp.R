@@ -1,7 +1,8 @@
 get_exp <- function(GSE_name) {
 
   # get the raw expression matrix from the "GSE_series_matrix.txt.gz"
-  
+
+  # 0. package------------------------------------------------------------------
   library(R.utils)
 
   GSE_txt <- gunzip(GSE_name, remove = FALSE)
