@@ -84,3 +84,20 @@ class(calc_rs(test))
 # [1] "matrix" "array" 
 ```
 
+## is_dup(x)
+The input object is a vector
+```
+test <- c(1, 2, 2, 3, 4, 4, 4)
+
+is_dup(test)
+# [1] "The Numbers of duplicated elements:"
+# [1] 3
+# [1] "The duplicated elements:"
+# [1] 2 4 4
+# [1] "The Number of occurrences of duplicated elements:"
+# dup
+# 2 4 
+# 1 2
+```
+
+
