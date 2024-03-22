@@ -1,4 +1,4 @@
-convert_probe_gene <- function(exp, anno, seq_grep = "/"){
+annotate_probe <- function(exp, anno, seq_grep = "/"){
   # readme----------------------------------------------------------------------
   # exp
   # data.frame()
