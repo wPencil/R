@@ -1,11 +1,11 @@
 plot_survival_curve <- function(object, time, event, groups,
-                         image_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
+                         file_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
 
-                         xlab0="time", ylab0="Survival probability",
-                         xlim0=NULL, break_x0=NULL,
-                         legend_title0=NULL, legend_labs0=NULL,
+                         x_lab = "time", y_lab = "Survival probability",
+                         x_lim = NULL, break_x = NULL,
+                         legend_title = NULL, legend_labs = NULL,
 
-                         legend_pos=c(1, 2), image_type = c("tiff", "png")) {
+                         legend_pos=c(1, 2), file_type = c("tiff", "png")) {
   # 0. readme-------------------------------------------------------------------
 
   # 1. Load packages------------------------------------------------------------
@@ -28,7 +28,6 @@ plot_survival_curve <- function(object, time, event, groups,
   # 4. fig----------------------------------------------------------------------
   legend_pos <- match.arg(arg = NULL, legend_pos)
 
-
   # 4.1 legend_pos = 1----------------------------------------------------------
   # show p-value in the upper right corner (default)
   if (legend_pos == 1) {
@@ -38,10 +37,10 @@ plot_survival_curve <- function(object, time, event, groups,
                   risk.table = TRUE, risk.table.col = "strata",
                   ggtheme = theme_linedraw(),
                   palette = c("darkblue", "red"),
-                  legend.title = legend_title0,
-                  legend.labs = legend_labs0,
-                  xlab = xlab0, xlim = xlim0, break.x.by = break_x0,
-                  ylab = ylab0
+                  legend.title = legend_title,
+                  legend.labs = legend_labs,
+                  xlab = x_lab, xlim = x_lim, break.x.by = break_x,
+                  ylab = y_lab
                   )
 
     p$plot <- p$plot+
@@ -63,10 +62,10 @@ plot_survival_curve <- function(object, time, event, groups,
                   risk.table = TRUE, risk.table.col = "strata",
                   ggtheme = theme_linedraw(),
                   palette = c("darkblue", "red"),
-                  legend.title = legend_title0,
-                  legend.labs = legend_labs0,
-                  xlab = xlab0, xlim = xlim0, break.x.by = break_x0,
-                  ylab = ylab0)
+                  legend.title = legend_title,
+                  legend.labs = legend_labs,
+                  xlab = x_lab, xlim = x_lim, break.x.by = break_x,
+                  ylab = y_lab)
 
     p$plot <- p$plot+
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
@@ -81,18 +80,18 @@ plot_survival_curve <- function(object, time, event, groups,
   print(p)
 
   # 5. Save as tiff/png image, default is tiff format---------------------------
-  image_type <- match.arg(arg = NULL, image_type)
+  file_type <- match.arg(arg = NULL, file_type)
 
   # 5.1 Save as tiff image------------------------------------------------------
-  if (image_type == "tiff") {
-    tiff(paste0(image_name,".tiff"), width = 4290, height = 4930, res = 1000)
+  if (file_type == "tiff") {
+    tiff(paste0(file_name,".tiff"), width = 4290, height = 4930, res = 1000)
     print(p)
     dev.off()
   }
 
   # 5.2 Save as png image-------------------------------------------------------
-  if (image_type == "png") {
-    png(paste0(image_name,".png"), width = 4290, height = 4930, res = 1000)
+  if (file_type == "png") {
+    png(paste0(file_name,".png"), width = 4290, height = 4930, res = 1000)
     print(p)
     dev.off()
   }
