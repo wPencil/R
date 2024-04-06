@@ -21,18 +21,20 @@ head(exp)
 ## plot_survival_curve()
 
 **Description**    
-plot_survival_curve() is used to draw survival curve and save as tiff image(by default) or png image. Must specify time, status, groups
+plot_survival_curve() is used to draw survival curve and save as tiff image(by default) or png image. 
+Must specify time, status, groups.
+The custom arguments: ①x axis name, ②y axis name, ③x axis scale and spacing, ④y axis scale and spacing, ⑤title name, ⑥group label, ⑦file type saved, tiff or png 
 
 **Usage**
 ```
 plot_survival_curve <- function(object, time, event, groups,
-                         image_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
+                         file_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
 
-                         xlab0="time", ylab0="Survival probability",
-                         xlim0=NULL, break_x0=NULL,
-                         legend_title0=NULL, legend_labs0=NULL,
+                         x_lab = "time", y_lab = "Survival probability",
+                         x_lim = NULL, break_x = NULL,
+                         legend_title = NULL, legend_labs = NULL,
 
-                         legend_pos=c(1, 2), image_type = c("tiff", "png"))
+                         legend_pos=c(1, 2), file_type = c("tiff", "png"))
 ```
 
 **Arguments**    
@@ -46,11 +48,11 @@ plot_survival_curve(object = lung, time = "time", event = "status", groups = "se
 ```
 plot_survival_curve(object = lung, time = "time", event = "status", groups = "sex",
 
-                    image_name = "survival curve of lung dataset",
+                    file_name = "survival curve of lung dataset",
 
-                    xlab0 = "This is x-axis", ylab0 = "This is y-axis",
-                    xlim0 = c(0,1200), break_x0 = 300,
-                    legend_title0 = "This is title", legend_labs0 = c("Male=1", "Female=2")
+                    x_lab = "This is x-axis", y_lab = "This is y-axis",
+                    x_lim = c(0,1200), break_x = 300,
+                    legend_title = "This is title", legend_labs = c("Male=1", "Female=2")
                     )
 ```
 <img src="https://github.com/wPencil/R/assets/109512465/16c09757-de96-4e8d-8c0d-b25068608a39" width="500" height="500">
