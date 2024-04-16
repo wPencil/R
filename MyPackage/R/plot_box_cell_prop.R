@@ -1,4 +1,4 @@
-fig_box_cell_prop <- function(object, file_name,ylab0=NULL,test_method="wilcox"){
+plot_box_cell_prop <- function(object, file_name,y_lab=NULL,test_method="wilcox"){
   # readme----------------------------------------------------------------------
   # the form of input data, object.the pheno is factor
   #       1         2         3         4
@@ -9,14 +9,14 @@ fig_box_cell_prop <- function(object, file_name,ylab0=NULL,test_method="wilcox")
   # To test the different of the percent of cell type in R and NR
   # cell_type, sample_id, percent, pheno(R, NR)
 
-  # Load packages---------------------------------------------------------------
+  # 0. Load packages------------------------------------------------------------
   library(coin)
   library(ggpubr)
 
-  # rename the column names-----------------------------------------------------
+  # 1. rename the column names--------------------------------------------------
   colnames(object) <- c("names", "sample_id", "percent", "pheno")
 
-  # Statistic test, wilcox test or t test---------------------------------------
+  # 2. Statistic test, wilcox test or t test------------------------------------
   if(test_method == "wilcox"){
     test_res <- wilcox_test(percent ~ pheno, data = object, distribution = "exact")
     xlab_text <- paste0(as.character(unique(object$names)),": P = ",round(pvalue(test_res),4))
@@ -28,8 +28,9 @@ fig_box_cell_prop <- function(object, file_name,ylab0=NULL,test_method="wilcox")
   }
 
   object$percent <- 100*object$percent
-  ylab_text <- paste0("(%) of ", ylab0)
+  ylab_text <- paste0("(%) of ", y_lab)
 
+  # 3. Save as image------------------------------------------------------------
   tiff(file = paste0(file_name, ".boxplot.tiff"),
        width = 3000, height = 4000, units = "px", res = 1000)
 
@@ -39,7 +40,10 @@ fig_box_cell_prop <- function(object, file_name,ylab0=NULL,test_method="wilcox")
     ggboxplot(object, x = "pheno", y = "percent", ylab=ylab_text,
               label.pos = "out", lab.nb.digits = 1, xlab=xlab_text, lab.size=3,
               add = c("jitter"), width=0.5, color="pheno",
-              palette = c("#00AFBB", "#E7B800"), legend=NULL, shape = "pheno"))
+              palette = c("#1D75A8","#F0C223"), legend=NULL, shape = "pheno")
+
+              # palette = c("#00AFBB", "#E7B800"), legend=NULL, shape = "pheno")
+    )
 
   dev.off()
 

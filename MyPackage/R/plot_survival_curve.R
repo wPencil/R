@@ -1,11 +1,11 @@
 plot_survival_curve <- function(object, time, event, groups,
-                         file_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
+                                file_name = paste0("survival curve", format(Sys.time(), "%Y-%m-%d %H-%M-%S")),
 
-                         x_lab = "time", y_lab = "Survival probability",
-                         x_lim = NULL, break_x = NULL,
-                         legend_title = NULL, legend_labs = NULL,
+                                x_lab = "time", y_lab = "Survival probability",
+                                x_lim = NULL, break_x = NULL,
+                                legend_title = NULL, legend_labs = NULL,
 
-                         legend_pos=c(1, 2), file_type = c("tiff", "png")) {
+                                legend_pos=c(1, 2), file_type = c("tiff", "png")) {
   # 0. readme-------------------------------------------------------------------
 
   # 1. Load packages------------------------------------------------------------
@@ -77,6 +77,9 @@ plot_survival_curve <- function(object, time, event, groups,
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
   }
 
+
+  p <- p %++% theme(panel.border = element_rect(fill=NA,color="black", size=1, linetype="solid"))
+  p <- p %++% theme(axis.title.y = element_text(margin = margin(0,0.5,0,0,'cm')))
   print(p)
 
   # 5. Save as tiff/png image, default is tiff format---------------------------
@@ -84,14 +87,14 @@ plot_survival_curve <- function(object, time, event, groups,
 
   # 5.1 Save as tiff image------------------------------------------------------
   if (file_type == "tiff") {
-    tiff(paste0(file_name,".tiff"), width = 4290, height = 4930, res = 1000)
+    tiff(paste0(file_name,".tiff"), width = 4000, height = 5000, res = 1000)
     print(p)
     dev.off()
   }
 
   # 5.2 Save as png image-------------------------------------------------------
   if (file_type == "png") {
-    png(paste0(file_name,".png"), width = 4290, height = 4930, res = 1000)
+    png(paste0(file_name,".png"), width = 4000, height = 5000, res = 1000)
     print(p)
     dev.off()
   }
