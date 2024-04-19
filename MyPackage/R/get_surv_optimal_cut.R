@@ -8,7 +8,7 @@ get_surv_optimal_cut <- function(object, time0, event0, vari){
 
   res.cat <- surv_categorize(res.cut)
 
-  res.cat[,3] <- factor(res,cat[,3], levels = c(1,2), labels = c("low", "high"))
+  res.cat[,3] <- factor(res.cat[,3], levels = c(1,2), labels = c("low", "high"))
 
   return(res.cat)
 
