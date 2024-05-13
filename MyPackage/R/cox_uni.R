@@ -18,7 +18,7 @@ cox_uni <- function(object){
                 dimnames = list(NULL,
                                 c("variable","p-value","HR","lower.95","upper.95")
                                 )
-                )
+                ) %>% as.data.frame()
 
   # cox-------------------------------------------------------------------------
   for(i in 3:dim(object)[2]){
@@ -30,7 +30,7 @@ cox_uni <- function(object){
     res[i-2, "upper.95"] <- res_i$conf.int[4]     # upper.95
   }
 
-  res <- as.data.frame(res)
+  res[, -1] <- as.numeric(res[, -1]) 
   
   return(res)
 }
