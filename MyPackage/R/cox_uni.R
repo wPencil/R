@@ -29,8 +29,6 @@ cox_uni <- function(object){
     res[i-2, "lower.95"] <- res_i$conf.int[3]     # lower.95
     res[i-2, "upper.95"] <- res_i$conf.int[4]     # upper.95
   }
-
-  res[, -1] <- as.numeric(res[, -1]) 
   
   return(res)
 }
