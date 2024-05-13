@@ -30,5 +30,7 @@ cox_uni <- function(object){
     res[i-2, "upper.95"] <- res_i$conf.int[4]     # upper.95
   }
 
+  res <- as.data.frame(res)
+  
   return(res)
 }
