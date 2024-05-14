@@ -14,7 +14,7 @@ cox_uni <- function(object){
   # 2  var2
   # 3  var3
 
-  name(object)[c(1, 2)] <- c("time", "status")
+  names(object)[c(1, 2)] <- c("time", "status")
   
   res <- matrix(,nrow = dim(object)[2]-2, ncol = 5,
                 dimnames = list(NULL,
