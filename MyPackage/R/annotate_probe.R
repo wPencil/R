@@ -4,7 +4,7 @@ annotate_probe <- function(exp, anno, seq_grep = "/"){
   # data.frame()
   # The first column is the probe id, the others are data
   #     1         2      3
-  #   probe_id  gene1  gene2  (column names)
+  #   probe_id   var1   var2  (column names)
   # 1
   # 2
 
